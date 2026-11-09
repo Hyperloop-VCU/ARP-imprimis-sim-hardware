@@ -61,7 +61,7 @@ def generate_launch_description():
             PathJoinSubstitution([FindExecutable(name="xacro")]),
             " ",
             PathJoinSubstitution(
-                [FindPackageShare("imprimis_sim_description"), "urdf", "diffbot.urdf.xacro"]
+                [FindPackageShare("ARP-imprimis-sim-description"), "urdf", "diffbot.urdf.xacro"]
             )
         ]
     )
@@ -75,7 +75,7 @@ def generate_launch_description():
     # You don't interact with hardware interfaces yourself - that job goes to special nodes called controllers.
     # The controllers expose hardware interfaces as topics, which other nodes can use to interact with the robot.
     # Controllers are spawned in dynamically by this "master node", called the controller manager.
-    controller_manager_config = PathJoinSubstitution([FindPackageShare("imprimis_sim_hardware"), "config", "diffbot_controllers.yaml"])
+    controller_manager_config = PathJoinSubstitution([FindPackageShare("ARP-imprimis-sim-hardware"), "config", "diffbot_controllers.yaml"])
     controller_manager = Node(
         package="controller_manager",
         executable="ros2_control_node",
@@ -119,7 +119,7 @@ def generate_launch_description():
     )
 
     # Rviz; for visualizing data.
-    rviz_config_file = PathJoinSubstitution([FindPackageShare("imprimis_sim_description"), "rviz", "diffbot.rviz"])
+    rviz_config_file = PathJoinSubstitution([FindPackageShare("ARP-imprimis-sim-description"), "rviz", "diffbot.rviz"])
     rviz = Node(
         package="rviz2",
         executable="rviz2",
@@ -133,7 +133,7 @@ def generate_launch_description():
     # The spin server publishes to diffbot_base_controller/cmd_vel.
     # The motor controller subscribes to this topic and writes to the hardware interface to move the robot around.
     spin_server = Node(
-        package="imprimis_sim_hardware",
+        package="ARP-imprimis-sim-hardware",
         executable="spin_server",
         condition=IfCondition(start_spin_server)
     )

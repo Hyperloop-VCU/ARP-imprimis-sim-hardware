@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(imprimis_sim_hardware LANGUAGES CXX)
+project(ARP-imprimis-sim-hardware LANGUAGES CXX)
 
 # set the same behavior for windows as it is on linux
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
@@ -28,7 +28,7 @@ ament_target_dependencies(spin_server rclcpp std_srvs geometry_msgs)
 # INSTALL
 install(
   DIRECTORY launch config
-  DESTINATION share/imprimis_sim_hardware
+  DESTINATION share/ARP-imprimis-sim-hardware
 )
 
 install(
